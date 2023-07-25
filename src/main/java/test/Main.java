@@ -11,6 +11,7 @@ public class Main {
         JiSuan suan = new JiSuan();
         int n = suan.add(10,5);
         System.out.println("计算的结果"+n);
+        System.out.println("苏翔真牛逼"+n);
 
 
     }
