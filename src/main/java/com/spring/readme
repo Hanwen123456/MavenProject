@@ -1,0 +1,13 @@
+@Configuration          //此注释  表示这个类是一个配置类，相当于 beans.xml文件
+public class AppConfig {
+
+    @Bean
+    public Apple a(){   //<bean id="a" class="com.spring.test2.Apple">
+         Apple a = new Apple();
+         a.setId(100);
+         return a;
+    }
+    // a对象以 a作为键名存到ApplicationContext容器
+
+
+}
