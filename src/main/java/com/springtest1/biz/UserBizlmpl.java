@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 /**
  * @program: MavenProject
  * @description:
@@ -13,6 +15,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserBizlmpl implements UserBiz{
+
+    @PostConstruct  //构造方法
+    public void init(){
+
+    }
+
     //将dao层的对象注入到biz DI依赖注入(将spring容器中托管的userDao对象传到此处)
     @Autowired  //根据类型来完成注入,在spring容器中根据类型 UserDao接口找实例
     @Qualifier("userDaolmpl")
