@@ -11,3 +11,18 @@ public class AppConfig {
 
 
 }
+
+Spring容器的生命周期
+1.容器初始化
+  读取系统配置
+2.扫描目录,读取要托管的类，存到BeanDefinitionMap,类定义信息
+3.IOC开始(利用反射创建对象)
+   ->A
+   Class.forName("").newInstance();
+   ->B    init()
+   ->     将对象存入到map<String,Object>
+4.DI
+   循环   map<String,Object>再DI
+   ->C   destroy()
+容器销毁
+

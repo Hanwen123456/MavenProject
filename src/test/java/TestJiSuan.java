@@ -33,8 +33,6 @@ public class TestJiSuan {
 
     @Test
     public void testConn() throws SQLException {
-        com.mysql.jdbc.Driver driver = new com.mysql.jdbc.Driver();
-        DriverManager.registerDriver(driver);
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_game","root","748290");
         System.out.println(conn);
     }
