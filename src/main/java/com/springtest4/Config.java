@@ -12,6 +12,6 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @ComponentScan
-@PropertySource(value="classpath:db.properties")
+@PropertySource("classpath:db.properties")
 public class Config {
 }
