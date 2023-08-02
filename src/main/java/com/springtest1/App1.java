@@ -2,6 +2,7 @@ package com.springtest1;
 
 import com.springtest1.biz.UserBiz;
 import com.springtest1.dao.UserDao;
+import com.springtest1.dao.UserDaolmpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -21,13 +22,14 @@ public class App1 {
         //容器中已经创建好了这个类  "键:userDaolmpl"  值:是对象
         UserDao ud = (UserDao) container.getBean("userDaolmpl");
         System.out.println(ud);
-        ud.add("张三");
+//        ud.add("张三");
 
         //取业务层的类
         UserBiz ub = (UserBiz) container.getBean("userBizlmpl");
-        ub.add("李四");
+//        ub.add("李四");
 
         UserDao udd = new UserDaolmpl();
-        udd.add("王五");
+//        udd.add("王五");
+        ((AnnotationConfigApplicationContext)container).close();
     }
 }

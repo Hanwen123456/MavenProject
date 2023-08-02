@@ -1,6 +1,5 @@
-package com.springtest1;
+package com.springtest1.dao;
 
-import com.springtest1.dao.UserDao;
 import org.springframework.stereotype.Repository;
 
 /**
