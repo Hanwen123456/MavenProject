@@ -42,7 +42,7 @@ public class AccountBizImplTest {
 
     @Test
     public void transfer() {
-        Account a = accountBiz.transfer(4,5,3);
+        Account a = accountBiz.transfer(4,5000,3);
         Assert.assertNotNull(a);
         log.info(a);
     }
