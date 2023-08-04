@@ -19,3 +19,5 @@ create table oprecord
    optype enum('deposite','withdraw','transfer') not null,
    transfreid varchar(50)
 );
+
+alert table accounts add constraint ck_balance check (balance>0);

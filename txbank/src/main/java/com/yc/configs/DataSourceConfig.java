@@ -4,11 +4,16 @@ import com.alibaba.druid.pool.DruidDataSource;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.TransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
@@ -22,6 +27,7 @@ import javax.sql.DataSource;
 @PropertySource("classpath:db.properties")
 @Data
 @Log4j2
+@EnableTransactionManagement  //启用事务管理器
 public class DataSourceConfig {
 
   //利用Di将db.properties中的内容注入
@@ -37,6 +43,13 @@ public class DataSourceConfig {
     @Value("#{T(Runtime).getRuntime().availableProcessors()*2}")
     //spEL->spring expression language
     private int cpuCount;
+
+    @Bean
+    public TransactionManager dataSourceTransactionManager(@Autowired DataSource ds){
+        DataSourceTransactionManager tx = new DataSourceTransactionManager();
+        tx.setDataSource(ds);
+        return tx;
+    }
 
     //以上属性从db.properties文件中读取出来后,存到了spring容器中Environment的变量
     @Bean   //IOC注解:托管第三方Bean
@@ -61,6 +74,7 @@ public class DataSourceConfig {
   }
 
   //参数:第三方的框架中的类  用@Bean托管
+    @Primary
   @Bean(initMethod = "init",destroyMethod = "close")  //DruidDataSource中提供了  init初始化方法
   public DruidDataSource druidDataSource(){           //另外要注意:idea会这个方法的返回值进行解析,判断
       DruidDataSource dds = new DruidDataSource();

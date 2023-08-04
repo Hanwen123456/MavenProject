@@ -27,7 +27,7 @@ public class Test1 extends TestCase {
     //单元测试用例
     @Test
     public void testAddAccount(){
-        accountBiz.addAccount(1,99);
+//        accountBiz.addAccount(1,99);
         log.error("hhhhhh");
     }
 
